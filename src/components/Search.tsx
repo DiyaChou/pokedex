@@ -72,6 +72,7 @@ const Search = ({ type }: { type: string }) => {
         <div className="w-full absolute z-50">
           {suggestions.map((pokemon_name) => (
             <div
+              key={pokemon_name}
               className="p-2 bg-white hover:bg-slate-200"
               onClick={() => {
                 setSearchText(

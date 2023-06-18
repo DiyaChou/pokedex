@@ -56,14 +56,12 @@ const ListingPage = () => {
     setLoading(true);
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20")
       .then((response) => {
-        console.log("response", response);
         if (response.ok) return response.json();
         else {
           throw response.json();
         }
       })
       .then((res) => {
-        console.log("res", res);
         dispatch({
           type: "add",
           payload: res.results.map((item: PokeResultInterface) => item.name),

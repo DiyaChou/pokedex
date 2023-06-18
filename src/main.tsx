@@ -33,9 +33,11 @@ const router = createBrowserRouter([
   {
     path: "/bookmarks",
     element: (
-      <BookmarkProvider>
-        <Bookmarks />
-      </BookmarkProvider>
+      <AllPokemonProvider>
+        <BookmarkProvider>
+          <Bookmarks />
+        </BookmarkProvider>
+      </AllPokemonProvider>
     ),
   },
   {
