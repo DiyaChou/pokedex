@@ -78,7 +78,7 @@ const ListingPage = () => {
 
   return (
     <div className="grid grid-cols-12 pt-5">
-      <SearchBar componentType="header" />
+      <SearchBar />
       <div className="col-start-2 col-span-10 mt-8">
         <div className="grid grid-cols-12 sm:gap-8">
           {pokemonList &&

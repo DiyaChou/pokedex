@@ -31,6 +31,7 @@ function allPokemonReducer(
 ) {
   switch (action.type) {
     case "add": {
+      allPokemon;
       return [...action.payload];
     }
     default: {
