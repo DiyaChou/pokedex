@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: PokemonHollow;
+    src: url('./assets/font/Pokemon Hollow.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: PokemonSolid;
+    src: url('./assets/font/Pokemon Solid.ttf') format('truetype');
+}
+
+.font-pokemonHollow {
+    font-family: PokemonHollow, Helvetica, sans-serif;
+
+}
+
+.font-pokemonSolid {
+    font-family: PokemonSolid, Helvetica, sans-serif;
+    color: #ffcc00;
+    text-shadow: 5px 5px 0px #365ba6,
+        4px -4px 0px #365ba6,
+        -4px 4px 0px #365ba6,
+        -4px -4px 0px #365ba6,
+        4px 0px 0px #365ba6,
+        0px 4px 0px #365ba6,
+        -4px 0px 0px #365ba6,
+        0px -4px 0px #365ba6;
+}
+
+.bg-poke-blue {
+    background-color: #355aa6;
+}
+
+.bg-poke-blue:hover {
+    background-color: #1a315f !important;
+}
+
+.card-ani {
+    transition: transform 250ms ease-in-out;
+}
+
+.card-ani:hover {
+    transform: scale(1.1);
+}
