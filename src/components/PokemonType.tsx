@@ -28,6 +28,8 @@ const PokemonType = ({ type }: { type: string }) => {
           ? "bg-violet-600 text-white capitalize px-8 py-2 mr-5 border rounded-2xl"
           : type == "flying"
           ? "bg-blue-300 text-white capitalize px-8 py-2 mr-5 border rounded-2xl"
+          : type == "fairy"
+          ? "bg-pink-300 text-white capitalize px-8 py-2 mr-5 border rounded-2xl"
           : "capitalize px-8 py-2 mr-5 border rounded-2xl"
       }
     >

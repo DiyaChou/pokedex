@@ -10,49 +10,67 @@ import AllPokemonProvider from "./contexts/allPokemonContext.tsx";
 import BookmarkProvider from "./contexts/bookmarkContext.tsx";
 import Bookmarks from "./pages/Bookmarks.tsx";
 import ErrorPage from "./pages/Error.tsx";
+import SuggestionsProvider from "./contexts/suggestionContext.tsx";
+import SearchProvider from "./contexts/searchContext.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <AllPokemonProvider>
-        <App />
-      </AllPokemonProvider>
+      <SearchProvider>
+        <AllPokemonProvider>
+          <PokemonProvider>
+            <SuggestionsProvider>
+              <App />
+            </SuggestionsProvider>
+          </PokemonProvider>
+        </AllPokemonProvider>
+      </SearchProvider>
     ),
     errorElement: <ErrorPage />,
   },
   {
-    path: "/all",
+    path: "/list",
     element: (
-      <AllPokemonProvider>
-        <PokemonProvider>
-          <ListingPage />
-        </PokemonProvider>
-      </AllPokemonProvider>
+      <SearchProvider>
+        <AllPokemonProvider>
+          <PokemonProvider>
+            <SuggestionsProvider>
+              <ListingPage />
+            </SuggestionsProvider>
+          </PokemonProvider>
+        </AllPokemonProvider>
+      </SearchProvider>
     ),
+    errorElement: <ErrorPage />,
   },
   {
     path: "/bookmarks",
     element: (
-      <AllPokemonProvider>
-        <BookmarkProvider>
-          <Bookmarks />
-        </BookmarkProvider>
-      </AllPokemonProvider>
+      <SearchProvider>
+        <AllPokemonProvider>
+          <BookmarkProvider>
+            <SuggestionsProvider>
+              <Bookmarks />
+            </SuggestionsProvider>
+          </BookmarkProvider>
+        </AllPokemonProvider>
+      </SearchProvider>
     ),
   },
   {
-    path: "/:name",
+    path: "/pokemon/:name",
     element: (
-      <AllPokemonProvider>
-        <BookmarkProvider>
-          <DetailsPokeDex />
-        </BookmarkProvider>
-      </AllPokemonProvider>
+      <SearchProvider>
+        <AllPokemonProvider>
+          <BookmarkProvider>
+            <SuggestionsProvider>
+              <DetailsPokeDex />
+            </SuggestionsProvider>
+          </BookmarkProvider>
+        </AllPokemonProvider>
+      </SearchProvider>
     ),
   },
-  // {
-  //   path: '*', element:(<NotFound />)
-  // }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

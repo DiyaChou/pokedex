@@ -5,7 +5,7 @@ import { useBookmarkDispatch } from "../contexts/bookmarkContext";
 const BookmarkCard = ({ name }: { name: string }) => {
   const navigate = useNavigate();
   const handleOnClick = () => {
-    navigate(`/${name.toLowerCase()}`);
+    navigate(`/pokemon/${name}`);
   };
   const dispatch = useBookmarkDispatch();
 
@@ -16,8 +16,8 @@ const BookmarkCard = ({ name }: { name: string }) => {
     });
   };
   return (
-    <div className="cursor-pointer border-2 border-solid border-gray-200 hover:border-gray-300 bg-gray-200 hover:bg-gray-300">
-      <div onClick={handleOnClick}>
+    <div className="cursor-pointer border-2 border-solid border-gray-200 hover:border-gray-300">
+      <div onClick={handleOnClick} className="bg-gray-200 hover:bg-gray-300">
         <img src={`poke_images/${name}.png`} alt="" />
       </div>
       <div className="flex justify-between items-center px-2">

@@ -3,15 +3,27 @@ import PokeCard from "../components/PokeCard";
 import SearchBar from "../components/Header";
 import { PokeResultInterface } from "../interface";
 import { usePokemon, usePokemonDispatch } from "../contexts/context";
+import { useSearchParams } from "react-router-dom";
+import {
+  useSuggestions,
+  useSuggestionsDispatch,
+} from "../contexts/suggestionContext";
+import { useAllPokemon } from "../contexts/allPokemonContext";
 // import SearchBar from "./components/SearchBar.jsx";
 
 const ListingPage = () => {
   const [next, setNext] = useState<null | string>(null);
-  // const [pokemonList, setPokemonList] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const pokemonList = usePokemon();
   const dispatch = usePokemonDispatch();
+  const [searchParams] = useSearchParams();
+  const suggestions = useSuggestions();
+  const suggestionDispatch = useSuggestionsDispatch();
+  const query = searchParams.get("query");
+  const allPokemon = useAllPokemon();
 
+  console.log(query);
+  console.log(suggestions);
   const observer = useRef<any>();
   const lastPokemonElementRef = useCallback(
     (node: any) => {
@@ -74,17 +86,48 @@ const ListingPage = () => {
       });
   }, [dispatch]);
 
+  useEffect(() => {
+    query &&
+      suggestionDispatch({
+        type: "set",
+        payload: allPokemon.filter((item) =>
+          item.includes(query.toLowerCase())
+        ),
+      });
+    query &&
+      console.log(
+        "hm",
+        allPokemon.filter((item) => item.includes(query.toLowerCase()))
+      );
+  }, [query, suggestionDispatch, allPokemon]);
+
   return (
     <div className="grid grid-cols-12 pt-5">
       <SearchBar />
       <div className="col-start-2 col-span-10 mt-8">
         <div className="grid grid-cols-12 sm:gap-8">
-          {pokemonList &&
+          {query ? (
+            suggestions.length == 0 ? (
+              <div className="col-span-12 text-xl flex justify-center items-center">
+                No Pokemon Found
+              </div>
+            ) : (
+              suggestions.map((suggestion) => (
+                <div
+                  className="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 xl:col-span-2 mb-8 sm:mb-auto h-full"
+                  key={suggestion}
+                >
+                  <PokeCard name={suggestion} />
+                </div>
+              ))
+            )
+          ) : (
+            pokemonList &&
             pokemonList.length !== 0 &&
             pokemonList.map((pokemon, index) =>
               pokemonList.length == index + 1 ? (
                 <div
-                  className="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 xl:col-span-2 mb-8 sm:mb-auto"
+                  className="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 xl:col-span-2 mb-8 sm:mb-auto h-full"
                   key={pokemon}
                   ref={lastPokemonElementRef}
                 >
@@ -92,13 +135,14 @@ const ListingPage = () => {
                 </div>
               ) : (
                 <div
-                  className="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 xl:col-span-2 mb-8 sm:mb-auto"
+                  className="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 xl:col-span-2 mb-8 sm:mb-auto h-full"
                   key={pokemon}
                 >
                   <PokeCard name={pokemon} />
                 </div>
               )
-            )}
+            )
+          )}
           {loading ? (
             <svg
               version="1.1"

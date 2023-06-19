@@ -21,22 +21,22 @@ const Bookmarks = () => {
 
   return (
     <div>
-      {bookmarks.length === 0 ? (
-        <div className="h-screen w-screen flex justify-center items-center flex-col">
-          <h4 className="text-xl">No Bookmarks Found.</h4>
-          <p
-            className="underline text-blue-600 cursor-pointer"
-            onClick={() => navigate(-1)}
-          >
-            Go Back
-          </p>
+      <div className="grid grid-cols-12 pt-5">
+        <SearchBar />
+        <div className="col-start-2 col-span-10 mt-8">
+          <h1 className="font-bold text-4xl mb-5">Bookmarks</h1>
         </div>
-      ) : (
-        <div className="grid grid-cols-12 pt-5">
-          <SearchBar />
-          <div className="col-start-2 col-span-10 mt-8">
-            <h1 className="font-bold text-4xl mb-5">Bookmarks</h1>
+        {bookmarks.length === 0 ? (
+          <div className="col-start-2 col-span-10 mt-8 flex justify-center items-center flex-col">
+            <h4 className="text-xl">No Bookmarks Found.</h4>
+            <p
+              className="underline text-blue-600 cursor-pointer"
+              onClick={() => navigate("/list")}
+            >
+              Add a Bookmark
+            </p>
           </div>
+        ) : (
           <div className="col-start-2 col-span-10 mt-8">
             <div className="grid grid-cols-12 sm:gap-8">
               {bookmarks &&
@@ -51,8 +51,8 @@ const Bookmarks = () => {
                 ))}
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

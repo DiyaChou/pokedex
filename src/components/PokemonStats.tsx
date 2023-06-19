@@ -3,25 +3,23 @@ import { StatInterface } from "../interface";
 
 const PokemonStats = ({ pokeStats }: { pokeStats: StatInterface[] }) => (
   <>
-    <h3 className="font-semibold text-2xl mb-3">Stats:</h3>
-    <div className="md:hidden flex justify-center items-center">
-      <div>
-        <BarChart
-          width={350}
-          height={155}
-          data={pokeStats}
-          layout="vertical"
-          barSize={30}
-        >
-          <XAxis type="number" hide />
-          <YAxis type="category" dataKey="name" stroke="#8884d8" width={150} />
-          <Tooltip />
-          <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-          <Bar dataKey="stat" fill="#8884d8" stroke="#8884d8" />
-        </BarChart>
-      </div>
+    <h3 className="font-semibold text-2xl mb-3 max-w-full">Stats:</h3>
+    <div className="md:hidden flex justify-center items-center max-w-full poke-stat-container">
+      <BarChart
+        width={350}
+        height={155}
+        data={pokeStats}
+        layout="vertical"
+        barSize={30}
+      >
+        <XAxis type="number" hide />
+        <YAxis type="category" dataKey="name" stroke="#8884d8" width={150} />
+        <Tooltip />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <Bar dataKey="stat" fill="#8884d8" stroke="#8884d8" />
+      </BarChart>
     </div>
-    <div className="hidden lg:block xl:hidden">
+    <div className="hidden lg:block xl:hidden max-w-full poke-stat-container">
       <BarChart
         width={450}
         height={200}
@@ -36,7 +34,7 @@ const PokemonStats = ({ pokeStats }: { pokeStats: StatInterface[] }) => (
         <Bar dataKey="stat" fill="#8884d8" stroke="#8884d8" />
       </BarChart>
     </div>
-    <div className="hidden md:block lg:hidden xl:block">
+    <div className="hidden md:block lg:hidden xl:block max-w-full poke-stat-container">
       <BarChart
         width={600}
         height={300}

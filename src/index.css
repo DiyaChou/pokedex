@@ -20,7 +20,7 @@
 .font-pokemonSolid {
     font-family: PokemonSolid, Helvetica, sans-serif;
     color: #ffcc00;
-    text-shadow: 5px 5px 0px #365ba6,
+    text-shadow: 4px 4px 0px #365ba6,
         4px -4px 0px #365ba6,
         -4px 4px 0px #365ba6,
         -4px -4px 0px #365ba6,
@@ -28,6 +28,10 @@
         0px 4px 0px #365ba6,
         -4px 0px 0px #365ba6,
         0px -4px 0px #365ba6;
+}
+
+.font-pokeSolid {
+    font-family: PokemonSolid, Helvetica, sans-serif;
 }
 
 .bg-poke-blue {
@@ -44,4 +48,9 @@
 
 .card-ani:hover {
     transform: scale(1.1);
+}
+
+.poke-stat-container svg,
+.poke-stat-container .recharts-wrapper {
+    max-width: 100%;
 }

@@ -1,41 +1,20 @@
 import "./App.css";
-import logo from "/images/logo.png";
-import bgImage1 from "/images/bgImage1.jpg";
-import { useNavigate } from "react-router-dom";
+import bgImage from "/images/bgImage.jpg";
 import Search from "./components/Search";
+import Header from "./components/Header";
 
 function App() {
-  const navigate = useNavigate();
-
   return (
     <div className="grid grid-cols-12 min-h-screen relative">
       <img
-        src={bgImage1}
+        src={bgImage}
         alt=""
         className="absolute min-h-full h-full w-full object-cover -z-10"
+        style={{ filter: "brightness(50%)" }}
       />
-      <div className="col-start-2 col-span-10 absolute top-5 w-full">
-        <div className="flex justify-between items-center w-full">
-          <img
-            src={logo}
-            alt=""
-            className="cursor-pointer"
-            style={{ width: "100px" }}
-          />
-          <div className="flex">
-            <button
-              className="bg-pink-400 text-white py-2 px-5"
-              onClick={() => navigate("/bookmarks")}
-            >
-              Bookmarks
-            </button>
-            <button
-              className="bg-blue-500 text-white ms-2 py-2 px-5"
-              onClick={() => navigate("/all")}
-            >
-              Full List
-            </button>
-          </div>
+      <div className="absolute w-full">
+        <div className="grid grid-cols-12 ">
+          <Header />
         </div>
       </div>
       <div className="col-start-2 col-span-10">
@@ -45,7 +24,7 @@ function App() {
               Search pokemon
             </h1>
             <div className="col-span-12">
-              <Search type="component" />
+              <Search />
             </div>
           </div>
         </div>
