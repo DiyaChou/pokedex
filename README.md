@@ -23,5 +23,5 @@ Pokedex is a web app that serves as a digital encyclopedia for Pokemon enthusias
 
     src: Contains the main source code files for the React application.
         components: Place your React components here.
-        App.tsx: Entry point of the application.
+        main.tsx: Entry point of the application.
     public: Public assets and HTML template.
