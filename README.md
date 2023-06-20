@@ -1,4 +1,4 @@
-# pokedex
+# Pokedex
 Pokedex is a web app that serves as a digital encyclopedia for Pokemon enthusiasts, providing a vast collection of information about various Pokemon species. Pokedex app features includes search functionality (which enables users to quickly find specific Pokemon by name) and Bookmark.
 
 ## Getting Started
